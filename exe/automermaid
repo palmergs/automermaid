@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require "automermaid"
+
+lines = Automermaid::Scanner.new("~/Projects/Tackle").scan
+scanlines = lines.map {|line| Automermaid::Scanline.new(line).process }
+valid = scanlines.reject {|scan| !scan.valid }
+
+valid.each do |v|
+  pp v
+end
+
+
